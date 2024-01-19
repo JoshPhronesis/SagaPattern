@@ -28,6 +28,8 @@ public class CreateShippingRequestCommandHandler : ICommandHandler<CreateShippin
         {
             await _repository.CreateShippingRequestAsync(command.ShippingRequest);
             _logger.LogInformation($"inserted shipping request with id: {command.ShippingRequest.Id} into db");
+            //todo: uncomment to trigger compensating transactions.
+            //throw new ApplicationException("an error has occured.");
         }
         catch
         {
